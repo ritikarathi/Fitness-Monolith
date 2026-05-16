@@ -24,7 +24,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String Id;
 
+    @Column(unique = true)
     private String email;
+
     private String password;
     private String firstName;
     private String lastName;
