@@ -92,7 +92,7 @@ public class JwtUtils {
 
     // Get Username From JWT
 
-    public String getUsernameFromToken(String jwt) {
+    public String getUserIdFromToken(String jwt) {
 
         return Jwts.parser()
 
