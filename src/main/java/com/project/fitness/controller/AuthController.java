@@ -8,6 +8,7 @@ import com.project.fitness.model.User;
 
 import com.project.fitness.security.JwtUtils;
 import com.project.fitness.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class AuthController {
     private final JwtUtils jwtUtils;
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponse> register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<UserResponse> register(@Valid @RequestBody RegisterRequest registerRequest) {
         return ResponseEntity.ok(userService.register(registerRequest));
     }
 
