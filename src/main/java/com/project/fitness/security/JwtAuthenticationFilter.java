@@ -38,9 +38,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 System.out.println("TOKEN THERE: " + jwt);
-                String userId = jwtUtils.getUserIdFromToken(jwt);
+                String email = jwtUtils.getUserIdFromToken(jwt);
 
-                UserDetails userDetails = userDetailsService.loadUserByUsername(userId);
+                UserDetails userDetails =
+                        userDetailsService.loadUserByUsername(email);
 
                 // Fetch claims to extract roles stored inside the token payload
                 Claims claims = jwtUtils.getAllClaims(jwt);
@@ -56,7 +57,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 // Create the Authentication Object using the userDetails authorities
                 UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(userId, null, authorities);
+                        new UsernamePasswordAuthenticationToken(
+                                userDetails,
+                                null,
+                                userDetails.getAuthorities());
 
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 

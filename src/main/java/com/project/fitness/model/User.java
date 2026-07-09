@@ -40,6 +40,15 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    private Integer age;
+
+    private Double height;   // centimeters
+
+    private Double weight;   // kilograms
+
+    @Enumerated(EnumType.STRING)
+    private FitnessGoal fitnessGoal;
+
 
     @OneToMany(mappedBy = "user", cascade =CascadeType.ALL,orphanRemoval = true)
     @JsonIgnore

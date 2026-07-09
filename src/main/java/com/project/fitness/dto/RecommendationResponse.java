@@ -9,10 +9,14 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+public class RecommendationResponse {
 
-public class RecommendationRequest {
-    private String userId;
-    private String activityId;
+    private String summary;
 
+    private List<String> improvements;
+
+    private List<String> suggestions;
+
+    private List<String> safety;
 
 }

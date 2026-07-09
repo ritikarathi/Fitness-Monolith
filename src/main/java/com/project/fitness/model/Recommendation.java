@@ -34,7 +34,7 @@ public class Recommendation {
     private String type;
 
     @Column(length = 2000)
-    private String recommendation;
+    private String summary;
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "json")
@@ -46,7 +46,7 @@ public class Recommendation {
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "json")
-    private List<String> saftey;
+    private List<String> safety;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

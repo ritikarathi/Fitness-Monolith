@@ -47,19 +47,18 @@ public class JwtUtils {
 
     // Generate JWT Token
 
-    public String generateToken(String userId, String role) {
+    public String generateToken(String email, String role) {
 
 
         return Jwts.builder()
 
 
-                .setSubject(userId)
+                .setSubject(email)
 
                 // Store Roles
                 .claim(
                         "roles",
-                        List.of(new SimpleGrantedAuthority(role))
-
+                        List.of(role)
                 )
 
                 // Token Creation Time
